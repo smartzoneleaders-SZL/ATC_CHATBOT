@@ -23,10 +23,6 @@ A conversational AI assistant built with Streamlit and LangChain that helps cust
 ## ⚙️ Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/Anas-Majeed1/ATC-Chatbot.git
-cd ATC-Chatbot
-```
 
 2. Create and activate a virtual environment:
 ```bash
