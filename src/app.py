@@ -1,5 +1,6 @@
 import streamlit as st
 from langchain_services.chain_builder import setup_chatbot
+from utils.showsources import format_source_documents, should_show_sources
 
 def initialize_session_state():
     """Initialize Streamlit session state variables"""
@@ -8,37 +9,6 @@ def initialize_session_state():
     if 'messages' not in st.session_state:
         st.session_state.messages = []
 
-def format_source_documents(source_docs):
-    """Format source documents into a clickable link"""
-    if not source_docs or len(source_docs) == 0:
-        return ""
-    
-    # Get the most relevant source (first one)
-    doc = source_docs[0]
-    
-    if hasattr(doc, 'metadata') and 'source' in doc.metadata:
-        # Extract only the filename without the path
-        filename = doc.metadata['source'].split('\\')[-1]
-        # Create a relative path for the link
-        file_path = f"data/{filename}"
-        return f'Read More Here: <a href="{file_path}" target="_blank"> {filename}</a>'
-    
-    return ""
-
-def should_show_sources(response):
-    """
-    Determine if sources should be shown based on the response content
-    """
-    greeting_patterns = [
-        "@atcmarket.com",
-        "hey", "hi", "hello", 
-        "bye", "goodbye", "thanks", "thank you",
-        "good morning", "good afternoon", "good evening", "good night",
-        "how can i assist you", "customer assistant at atcmarket"
-    ]
-    
-    response_lower = response.lower()
-    return not any(pattern in response_lower for pattern in greeting_patterns)
 
 def main():
     """Main function to run the Streamlit web interface"""
