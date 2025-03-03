@@ -22,6 +22,7 @@ def format_source_documents(source_docs):
         # Extract only the filename without the path
         full_path = doc.metadata['source']
         filename = full_path.split('\\')[-1]
+        filename = filename.split('/')[-1]
         
         # Check if the filename is in our mapping
         if filename in file_url_mapping:
@@ -45,8 +46,8 @@ def should_show_sources(response):
         "@atcmarket.com",
         r"\bhey\b", r"\bhi\b", r"\bhello\b", 
         r"\bbye\b", r"\bgoodbye\b", r"\bthanks\b", r"\bthank you\b",
-        r"\bgood morning\b", r"\bgood afternoon\b", r"\bgood evening\b", r"\bgood night\b",
-        r"\bhow can i assist you\b", r"\bI'm happy to help you\b", r"\bI'm not aware of\b"
+        r"\bgood morning\b", r"\bgood afternoon\b", r"\bgood evening\b", r"\bgood night\b", r"\bhappy to assist you\b", r"\bi'm not sure\b",
+        r"\bhow can i assist you\b", r"\bi'm happy to help you\b", r"\bi'm not aware of\b", r"\bi'm a customer assistant at ATCMarket\b",
     ]
     
     response_lower = response.lower()

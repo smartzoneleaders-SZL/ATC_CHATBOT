@@ -13,7 +13,7 @@ def setup_chatbot():
     Returns:
         ConversationalRetrievalChain: Configured chatbot chain
     """
-    documents = load_documents("../data")
+    documents = load_documents("./data")
     chunks = split_documents(documents)
     vector_store = create_vector_store(chunks)
     
