@@ -32,6 +32,3 @@ ENV/
 
 # Environment variables
 .env
-
-# Project specific
-data/*.pdf
