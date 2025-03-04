@@ -34,9 +34,9 @@ def setup_chatbot():
     )
     
     llm = ChatGroq(
-        temperature=0.1,
+        temperature=0.3,
         model_name="llama-3.1-8b-instant",
-        max_tokens=150
+        max_tokens=200
     )
     
     memory = ConversationBufferMemory(

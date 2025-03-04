@@ -43,17 +43,17 @@ def should_show_sources(response):
     import re
     
     greeting_patterns = [
-        "@atcmarket.com",
+        "@atc-gulf.com",
         r"\bhey\b", r"\bhi\b", r"\bhello\b", 
-        r"\bbye\b", r"\bgoodbye\b", r"\bthanks\b", r"\bthank you\b",
+        r"\bbye\b", r"\bgoodbye\b", r"\bthanks\b", r"\bthank you\b", r"\bhave a great day\b"
         r"\bgood morning\b", r"\bgood afternoon\b", r"\bgood evening\b", r"\bgood night\b", r"\bhappy to assist you\b", r"\bi'm not sure\b",
-        r"\bhow can i assist you\b", r"\bi'm happy to help you\b", r"\bi'm not aware of\b", r"\bi'm a customer assistant at ATCMarket\b",
+        r"\bhow can i assist you\b", r"\bi'm happy to help you\b", r"\bi'm not aware of\b", r"\bi'm a customer assistant at atcmarket\b",
     ]
     
     response_lower = response.lower()
     
     for pattern in greeting_patterns:
-        if pattern == "@atcmarket.com" and pattern in response_lower:
+        if pattern == "@atc-gulf.com" and pattern in response_lower:
             return False
         elif pattern.startswith(r"\b") and re.search(pattern, response_lower):
             return False
