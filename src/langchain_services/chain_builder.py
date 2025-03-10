@@ -5,6 +5,8 @@ from langchain.memory import ConversationBufferMemory
 from .document_loader import load_documents, split_documents
 from .embeddings import create_vector_store
 from utils.constants import SYSTEM_PROMPT
+import os
+from dotenv import load_dotenv
 
 def setup_chatbot():
     """
@@ -13,6 +15,12 @@ def setup_chatbot():
     Returns:
         ConversationalRetrievalChain: Configured chatbot chain
     """
+    # Load environment variables
+    load_dotenv()
+    
+    if not os.getenv("GROQ_API_KEY"):
+        raise ValueError("GROQ_API_KEY environment variable is not set")
+
     documents = load_documents("./data")
     chunks = split_documents(documents)
     vector_store = create_vector_store(chunks)
