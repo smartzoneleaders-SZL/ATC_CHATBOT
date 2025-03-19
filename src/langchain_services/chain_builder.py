@@ -8,10 +8,13 @@ from utils.constants import SYSTEM_PROMPT
 import os
 from dotenv import load_dotenv
 
-def setup_chatbot():
+def setup_chatbot(data_dir="./data"):
     """
     Initialize the chatbot with necessary components
     
+    Args:
+        data_dir (str): Path to the data directory
+        
     Returns:
         ConversationalRetrievalChain: Configured chatbot chain
     """
@@ -21,7 +24,7 @@ def setup_chatbot():
     if not os.getenv("GROQ_API_KEY"):
         raise ValueError("GROQ_API_KEY environment variable is not set")
 
-    documents = load_documents("./data")
+    documents = load_documents(data_dir)
     chunks = split_documents(documents)
     vector_store = create_vector_store(chunks)
     
